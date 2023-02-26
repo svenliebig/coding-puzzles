@@ -1,3 +1,3 @@
-module github.com/svenliebig/coding-puzzles/2023-02-26-add-two-numbers
+module coding-puzzles/add-two-numbers-array
 
 go 1.19
