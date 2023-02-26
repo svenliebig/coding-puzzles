@@ -11,6 +11,9 @@ func main() {
 	fmt.Println(twoSum([]int{3, 3}, 6))
 }
 
+// try this with map
+// try this with another range
+
 func twoSum(arr []int, tar int) []int {
 	for i, v := range arr {
 		for ii := i; ii < len(arr); ii++ {
