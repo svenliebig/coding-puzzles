@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func symmetricDifference(s ...[]int) []int {
   if len(s) == 0 {
     return []int{}
@@ -51,15 +53,37 @@ func sort(a []int) []int {
     return a
   }
 
-  for i := 0; i < len(a); i++ {
-    for ii := len(a) - 1; ii > i; ii-- {
-      if a[ii] < a[i] {
-        t := a[ii]
-        a[ii] = a[i]
-        a[i] = t
-      }
+  return quicksort(a)
+}
+
+func quicksort(a []int) []int {
+  qs(a, 0, len(a)-1)
+  return a
+}
+
+func qs(a []int, start, end int) {
+  if start < end {
+    p := part(a, start, end)
+    qs(a, start, p-1)
+    qs(a, p+1, end)
+  }
+}
+
+func part(a []int, start, end int) int {
+  i := start - 1
+  pivot := a[end]
+
+  for l := start; l < end; l++ {
+    fmt.Println(a, a[l], pivot)
+    if a[l] <= pivot {
+      i++
+      a[i], a[l] = a[l], a[i]
+      fmt.Println("switch", i, l, a)
     }
   }
 
-  return a
+  a[i + 1], a[end] = a[end], a[i + 1] 
+  fmt.Println(a)
+
+  return i + 1
 }
