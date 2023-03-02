@@ -5,47 +5,41 @@ import (
 )
 
 func compress(s []byte) int {
-  ci := 0
-  cc := s[0]
-  ca := 1
+  if len(s) == 1 {
+    return 1
+  }
 
+  // the running index where we are at
+  ri := 1
+  // the curret byte that we count
+  // var rv byte
+  // how often did we count
+  rc := 1
   for i, v := range s[1:] {
-    if cc == v {
-      ca++
-    }
-
-    if cc != v || i == len(s) - 2 {
-      if ca == 1 {
-        s[ci] = cc
-        ci++
-      } else {
-        r:= createCharCompress(cc, ca)
-        for i, v := range r {
-          s[ci + i] = v
+    if s[ri - 1] != v {
+      if rc > 1 {
+        for _, b := range []byte(strconv.FormatInt(int64(rc), 10)) {
+          s[ri] = b
+          ri++
         }
-        ci += len(r)
-        ca = 1
+        rc = 1
       }
-      cc = v
+
+      s[ri] = v
+      ri++
+    } else {
+      rc++
+
+      if i == len(s) - 2 {
+        for _, b := range []byte(strconv.FormatInt(int64(rc), 10)) {
+          s[ri] = b
+          ri++
+        }
+      }
     }
   }
 
-  if ca == 1 {
-    s[ci] = cc
-    ci++
-  } else {
-    r:= createCharCompress(cc, ca)
-    for i, v := range r {
-      s[ci + i] = v
-    }
-    ci += len(r)
-  }
-
-  s = s[:ci]
+  s = s[:ri]
   return len(s)
-}
-
-func createCharCompress(c byte, a int) []byte {
-  return append([]byte{c}, []byte(strconv.FormatInt(int64(a), 10))...)
 }
 

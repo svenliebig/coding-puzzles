@@ -32,6 +32,15 @@ func TestCompress(t *testing.T) {
       t.Errorf("got %v want %v", string(given[:got]), string(want))
     }
   })
+
+  t.Run("case4", func(t *testing.T) {
+    given := []byte("abc")
+    want := []byte("abc")
+    got := compress(given)
+    if !reflect.DeepEqual(given[:got], want) {
+      t.Errorf("got %v want %v", string(given[:got]), string(want))
+    }
+  })
 }
 
 // BenchmarkCompress-8   	 7306290	       161.4 ns/op	      24 B/op	         3 allocs/op
@@ -42,6 +51,8 @@ func TestCompress(t *testing.T) {
 
 // switching from using fmt to convert int to string to strconf.FormatInt
 // BenchmarkCompress-8   	 3887724	       307.7 ns/op	      96 B/op	      12 allocs/op
+// 🎉  🎉  🎉
+// BenchmarkCompress-8   	15010756	        79.54 ns/op	       0 B/op	       0 allocs/op
 func BenchmarkCompress(b *testing.B) {
   for i := 0; i < b.N; i++ {
     compress([]byte("aabbccccccdddddddddeeeeeeaaaaaakkkkkkjjjasjjjjssjsjjjjsjsjsjss"))
