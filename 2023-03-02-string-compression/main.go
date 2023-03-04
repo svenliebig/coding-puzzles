@@ -9,11 +9,7 @@ func compress(s []byte) int {
     return 1
   }
 
-  // the running index where we are at
   ri := 1
-  // the curret byte that we count
-  // var rv byte
-  // how often did we count
   rc := 1
   for i, v := range s[1:] {
     if s[ri - 1] != v {
