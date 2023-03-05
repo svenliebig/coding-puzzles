@@ -5,6 +5,9 @@ type Node struct {
 	Next *Node
 }
 
+// Complexity
+// Time: O(n+1) where n is the longest tree and +1 when the last sum is > 9
+// Space: O(n+1) we create one new node for each node in the longest tree +1 when the last sum is > 9
 func addTwoNumbers(l1 *Node, l2 *Node) *Node {
   if l1 == nil && l2 == nil {
     return nil

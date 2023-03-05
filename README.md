@@ -28,6 +28,6 @@ cp -R .templates/go/<template-name>/ <todays-puzzle-dir>
 
 ## todo
 
-* [ ] - add-two-numbers recursion
+* [x] - add-two-numbers recursion
 * [ ] - add-two-numbers in one loop
 * [ ] - palindrome with reversing the number (without str conv)
