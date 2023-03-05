@@ -34,13 +34,16 @@ fi
 
 root=$(dirname $(dirname $(readlink -fn $0)))
 dir="$(date +%Y-%m-%d)-$1"
-projectDir="$root/$dir"
+projectDir="$root/$dir-go"
 
 echo "creating new project dir:"
 echo "  $projectDir"
 
 mkdir -p "$projectDir"
 cp -r "$templateDir/$chosenTemplate/." "$projectDir"
-cd "$projectDir"
-go mod init "github.com/svenliebig/coding-puzzles/$dir"
+
+go mod init "coding-puzzles/$chosenTemplate"
 echo "done!"
+echo ""
+echo "run: 'cd $projectDir'"
+echo ""
