@@ -30,4 +30,4 @@ cp -R .templates/go/<template-name>/ <todays-puzzle-dir>
 
 * [x] - add-two-numbers recursion
 * [ ] - add-two-numbers in one loop
-* [ ] - palindrome with reversing the number (without str conv)
+* [x] - palindrome with reversing the number (without str conv)
