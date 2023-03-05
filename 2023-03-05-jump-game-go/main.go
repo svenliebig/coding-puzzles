@@ -14,7 +14,8 @@ func minJumps(arr []int) int {
   visited := make([]bool, len(arr))
   visited[0] = true
   // a queue of indexes of the array that we will check
-  queue := []int{0}
+  queue := make([]int, 1, len(arr))
+  queue[0] = 0
   steps := 0
 
   for len(queue) > 0 {
