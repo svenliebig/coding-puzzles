@@ -3,7 +3,7 @@ package main
 func minJumps(arr []int) int {
   indexes := make(map[int][]int)
 
-  for i := 0; i < len(arr); i++ {
+  for i := 1; i < len(arr); i++ {
     if _, ok := indexes[arr[i]]; !ok {
       indexes[arr[i]] = []int{i}
     } else {
@@ -36,11 +36,13 @@ func minJumps(arr []int) int {
       // add the next, if the next wasn't visited already
       if !visited[current + 1] {
         queue = append(queue, current + 1)
+        visited[current + 1] = true
       }
 
       // add the previous, if the previous wasn't visited already
       if current > 0 && !visited[current - 1] {
         queue = append(queue, current - 1)
+        visited[current - 1] = true
       }
     }
     
