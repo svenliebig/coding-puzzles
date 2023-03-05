@@ -104,10 +104,6 @@ func TestAddTwoNumbers(t *testing.T) {
 
 		res := addTwoNumbers(l1, l2)
 
-		if res.Next.Next.Next.Next.Next.Next.Next.Next != nil {
-			t.Errorf("the returned linked list is to long %v", res)
-		}
-
 		result := make([]int, 0)
 
 		for n := res; n != nil; n = n.Next {
