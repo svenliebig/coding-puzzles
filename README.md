@@ -31,3 +31,4 @@ cp -R .templates/go/<template-name>/ <todays-puzzle-dir>
 * [x] - add-two-numbers recursion
 * [ ] - add-two-numbers in one loop
 * [x] - palindrome with reversing the number (without str conv)
+* [x] - longest substring without recusion (one loop with left pad saving)
