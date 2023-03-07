@@ -43,6 +43,5 @@ func compress(s []byte) int {
     }
   }
 
-  s = s[:li]
-  return len(s)
+  return li
 }
